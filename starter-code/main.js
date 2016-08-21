@@ -14,8 +14,8 @@ if (cardTwo === cardFour) {
 */
 
 var gameBoard = document.getElementById('game-board');
-var createBoard = function() {
-    for (i = 0; i < 4; i ++) {
+var createBoard = function () {
+    for (i = 0; i < 4; i++) {
         var card = document.createElement('div');
         card.className = ('card');
         gameBoard.appendChild(card);
