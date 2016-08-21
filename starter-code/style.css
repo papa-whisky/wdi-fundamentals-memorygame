@@ -1,17 +1,17 @@
 .board {
-  width: 80%;
   display: inline-block;
   margin: 4%;
+  width: 80%;
 }
 
 .card {
-  height: 200px;
-  width: 150px;
-  border: 1px solid #000000;
-  background: #ffff00;
+  background: #ff0;
+  border: 1px solid #000;
   border-radius: 10px;
   display: inline-block;
+  height: 200px;
   margin: 4%;
+  width: 150px;
 }
 
 h1 {
@@ -23,15 +23,15 @@ h2 {
 }
 
 .name {
-  color: #ff0000
+  color: #f00;
 }
 
 html,
 body {
   height: 100%;
-  width: 100%;
   margin: 0;
   text-align: center;
+  width: 100%;
 }
 
 nav {
@@ -41,9 +41,9 @@ nav {
 a {
   background: #ffbf00;
   color: white;
-  padding: 35px;
   display: block;
   float: left;
+  padding: 35px;
 }
 
 a:hover {
@@ -51,12 +51,12 @@ a:hover {
 }
 
 .clearfix:after {
-  visibility: hidden;
-  display: block;
-  content: " ";
   clear: both;
-  height: 0;
+  content: ' ';
+  display: block;
   font-size: 0;
+  height: 0;
+  visibility: hidden;
 }
 
 footer {
