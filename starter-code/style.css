@@ -63,3 +63,8 @@ footer {
   background: #808080;
   clear: both;
 }
+
+img {
+  max-height: 100%;
+  max-width: 100%;
+}
