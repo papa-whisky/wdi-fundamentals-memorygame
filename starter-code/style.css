@@ -1,16 +1,19 @@
 .board {
   margin: 0 auto;
+  padding: 25px 0 50px 0;
   width: 80%;
+  height: 100%;
 }
 
 .card {
   background: #ff0;
-  border: 1px solid #000;
+  border: 2px solid #000;
   border-radius: 10px;
   display: inline-block;
   height: 200px;
-  margin: 4%;
+  margin: 1em;
   width: 150px;
+  overflow: hidden;
 }
 
 h1 {
@@ -25,10 +28,16 @@ h2 {
   color: #f00;
 }
 
-html,
-body {
+html {
   height: 100%;
   margin: 0;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  position: relative;
   text-align: center;
   width: 100%;
 }
@@ -60,10 +69,34 @@ a:hover {
 
 footer {
   background: #808080;
+  bottom: 0;
   clear: both;
+  height: 25px;
+  position: absolute;
+  width: 100%;
 }
 
 img {
-  max-height: 100%;
-  max-width: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+.invalid {
+  border: 1px solid red;
+}
+
+.matched {
+  border: 2px solid green;
+}
+
+.wrong-match {
+  border: 2px solid red;
+}
+
+#number {
+  width: 200px;
+}
+
+#number:focus {
+  outline: none;
 }
