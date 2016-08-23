@@ -1,6 +1,5 @@
 .board {
-  display: inline-block;
-  margin: 4%;
+  margin: 0 auto;
   width: 80%;
 }
 

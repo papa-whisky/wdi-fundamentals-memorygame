@@ -1,21 +1,60 @@
 //Define global variables.
-var cardTypes = ["queen", "queen", "king", "king", "queen", "queen", "king", "king"];
+var cardTypes = ["two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king", "ace"];
 var cardsInPlay = [];
 var gameBoard = document.getElementById('game-board');
 var cards = document.getElementsByClassName('card')
+var startButton = document.getElementById('start');
+var numInput = document.getElementById('number');
+var deck = [];
 
-//Generate '.card' divs on page load.
-var createBoard = function () {
-  for (var i = 0; i < cardTypes.length; i++) {
-    var card = document.createElement('div');
-    card.className = ('card');
-    card.setAttribute('data-card', cardTypes[i]);
-    card.setAttribute('data-matched', "N");
-    gameBoard.appendChild(card);
-    card.addEventListener('click', clickCard);
+//Check that user input is valid, start game if so.
+var checkInput = function () {
+  if (parseInt(numInput.value) % 2 === 0 && parseInt(numInput.value) > 3) {
+    createBoard(parseInt(numInput.value));
+    numInput.value = "";
+    startButton.value = "Restart Game";
+  } else {
+    alert("Please enter an EVEN number of 4 or higher.");
   };
 };
-createBoard();
+
+//Generate deck, shuffle, create game board.
+var createBoard = function (x) {
+  clearBoard();
+  //Create half of deck randomly.
+  for (var i = 0; i < x / 2; i++) {
+    var card = document.createElement('div');
+    var rand = cardTypes[Math.floor(Math.random() * cardTypes.length)];
+    card.className = ('card');
+    card.setAttribute('data-card', rand);
+    card.setAttribute('data-matched', "N");
+    deck.push(card);
+    card.addEventListener('click', clickCard);
+  };
+  //Duplicate first half of deck (so every card will have a pair).
+  for (var i = 0; i < x / 2; i++) {
+    var card = document.createElement('div');
+    card.className = ('card');
+    card.setAttribute('data-card', deck[i].getAttribute('data-card'));
+    card.setAttribute('data-matched', "N");
+    deck.push(card);
+    card.addEventListener('click', clickCard);
+  };
+  //Shuffle deck.
+  shuffleArray(deck);
+  //Create game board.
+  for (var i = 0; i < x; i++) {
+    gameBoard.appendChild(deck[i]);
+  };
+};
+
+//Clear game board.
+var clearBoard = function () {
+  deck = [];
+  while (gameBoard.firstChild) {
+    gameBoard.removeChild(gameBoard.firstChild);
+  };
+};
 
 //Actions to take when card is clicked.
 function clickCard() {
@@ -24,12 +63,8 @@ function clickCard() {
     //Add card to array for later comparison.
     cardsInPlay.push(this);
     //Display image on clicked card.
-    if (this.getAttribute('data-card') === "queen") {
-      this.innerHTML = '<img src="queen.png" alt="Queen">';
-    } else {
-      this.innerHTML = '<img src="king.png" alt="King">';
-    };
-    ////Call isMatch function once two cards have been clicked. Function delayed to allow image time to load. (Why does this require quotes around isMatch?)
+    this.innerHTML = '<img src="images/' + this.getAttribute('data-card') + '.png" alt="' + this.getAttribute('data-card') + '">';
+    //Once two cards have been clicked, call function to compare. Delay to allow image time to load. (**Why does function need to be in quotes?**)
     if (cardsInPlay.length === 2) {
       setTimeout('isMatch(cardsInPlay)', 200);
     };
@@ -37,7 +72,7 @@ function clickCard() {
 };
 
 //Compare two cards and display message.
-var isMatch = function(x) {
+var isMatch = function (x) {
   if (x[0].getAttribute('data-card') === x[1].getAttribute('data-card')) {
     alert("You found a match!");
     //Mark cards as matched.
@@ -55,7 +90,7 @@ var isMatch = function(x) {
 };
 
 //Check whether all cards have been turned over (i.e. game is complete).
-var isComplete = function() {
+var isComplete = function () {
   for (var i = 0; i < cards.length; i++) {
     if (cards[i].getAttribute('data-matched') === "N") {
       return false;
@@ -65,10 +100,21 @@ var isComplete = function() {
 };
 
 //Clear images from unmatched cards.
-var clearCards = function() {
+var clearCards = function () {
   for (var i = 0; i < cards.length; i++) {
     if (cards[i].getAttribute('data-matched') === "N") {
       cards[i].innerHTML = "";
     };
   };
+};
+
+//Durstenfeld shuffle algorithm.
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  };
+  return array;
 };
