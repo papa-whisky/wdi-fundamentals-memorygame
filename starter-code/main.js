@@ -106,6 +106,7 @@ var isMatch = function (x) {
     //Check whether game is complete and display message if so.
     if (isComplete() === true) {
       document.getElementById('win').className = ('show');
+      document.getElementById('win').scrollIntoView();
     };
   } else {
     x[0].className += (' invalid');
