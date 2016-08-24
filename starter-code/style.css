@@ -1,27 +1,32 @@
 .board {
+  height: 100%;
   margin: 0 auto;
   padding: 25px 0 50px 0;
-  width: 80%;
-  height: 100%;
+  width: 90%;
 }
 
 .card {
-  background: #ff0;
-  border: 2px solid #000;
-  border-radius: 10px;
+  background: #47e5bc;
+  border: 1px solid #000;
+  border-radius: 22px;
   display: inline-block;
   height: 200px;
   margin: 1em;
-  width: 150px;
   overflow: hidden;
+  width: 150px;
 }
 
 h1 {
-  color: rgb(2, 132, 130);
+  color: #47e5bc;
+  margin: 0;
+  padding: 5px;
 }
 
 h2 {
-  color: #ffd700;
+  color: #ebf5ee;
+  display: inline;
+  font-size: 20px;
+  margin: 0 10px;
 }
 
 .name {
@@ -35,6 +40,8 @@ html {
 }
 
 body {
+  background: #93a3b1;
+  font-family: 'Ubuntu', sans-serif;
   margin: 0;
   min-height: 100%;
   position: relative;
@@ -43,19 +50,19 @@ body {
 }
 
 nav {
-  background: #808080;
+  background: #ebf5ee;
 }
 
 a {
-  background: #ffbf00;
-  color: white;
+  background: #8b786d;
+  color: #ebf5ee;
   display: block;
   float: left;
-  padding: 35px;
+  padding: 10px 35px;
 }
 
 a:hover {
-  background: #ee5f3c;
+  background: #283044;
 }
 
 .clearfix:after {
@@ -68,9 +75,10 @@ a:hover {
 }
 
 footer {
-  background: #808080;
+  background: #ebf5ee;
   bottom: 0;
   clear: both;
+  font-size: 18px;
   height: 25px;
   position: absolute;
   width: 100%;
@@ -78,6 +86,7 @@ footer {
 
 img {
   height: 100%;
+  padding-left: 1px;
   width: 100%;
 }
 
@@ -86,11 +95,7 @@ img {
 }
 
 .matched {
-  border: 2px solid green;
-}
-
-.wrong-match {
-  border: 2px solid red;
+  border: 1px solid green;
 }
 
 #number {
@@ -99,4 +104,34 @@ img {
 
 #number:focus {
   outline: none;
+}
+
+p {
+  display: none;
+  padding: 0 20px;
+}
+
+#instButton {
+  background: #283044;
+  cursor: pointer;
+  float: left;
+  height: 30px;
+  padding-top: 10px;
+  width: 35%;
+}
+
+#inputs {
+  background: #283044;
+  height: 30px;
+  padding-top: 10px;
+}
+
+#win {
+  background: darkgreen;
+  color: lightgreen;
+  font-size: 20px;
+  margin: 0;
+}
+.show {
+  display: block;
 }

@@ -6,6 +6,17 @@ var cards = document.getElementsByClassName('card')
 var startButton = document.getElementById('start');
 var numInput = document.getElementById('number');
 var deck = [];
+var instButton = document.getElementById('instButton');
+
+instButton.addEventListener("click", function () {
+  if (document.getElementById('arrow').innerHTML === '˅') {
+    document.getElementById('text').className = ('show');
+    document.getElementById('arrow').innerHTML = '˄';
+  } else {
+    document.getElementById('text').className = ('');
+    document.getElementById('arrow').innerHTML = '˅';
+  };
+});
 
 //Check that user input is valid, start game if so.
 var checkInput = function () {
@@ -62,6 +73,7 @@ var createBoard = function (x) {
 //Clear game board.
 var clearBoard = function () {
   deck = [];
+  document.getElementById('win').className = ('');
   while (gameBoard.firstChild) {
     gameBoard.removeChild(gameBoard.firstChild);
   };
@@ -93,11 +105,11 @@ var isMatch = function (x) {
     cardsInPlay = [];
     //Check whether game is complete and display message if so.
     if (isComplete() === true) {
-      alert("Game complete!");
+      document.getElementById('win').className = ('show');
     };
   } else {
-    x[0].className += (' wrong-match');
-    x[1].className += (' wrong-match');
+    x[0].className += (' invalid');
+    x[1].className += (' invalid');
     setTimeout('clearCards()', 1750);
     setTimeout('cardsInPlay = []', 1750);
   };
