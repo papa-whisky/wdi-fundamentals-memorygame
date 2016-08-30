@@ -1,137 +1,211 @@
-.board {
-  height: 100%;
-  margin: 0 auto;
-  padding: 25px 0 50px 0;
-  width: 90%;
-}
-
-.card {
-  background: #47e5bc;
-  border: 1px solid #000;
-  border-radius: 22px;
-  display: inline-block;
-  height: 200px;
-  margin: 1em;
-  overflow: hidden;
-  width: 150px;
-}
-
-h1 {
-  color: #47e5bc;
-  margin: 0;
-  padding: 5px;
-}
-
-h2 {
-  color: #ebf5ee;
-  display: inline;
-  font-size: 20px;
-  margin: 0 10px;
-}
-
-.name {
-  color: #f00;
-}
-
-html {
+html,
+body {
+  color: white;
   height: 100%;
   margin: 0;
   width: 100%;
 }
 
 body {
-  background: #93a3b1;
-  font-family: 'Ubuntu', sans-serif;
-  margin: 0;
-  min-height: 100%;
-  position: relative;
+  font-family: 'Lora', serif;
+}
+
+.wrapper {
+  background: lightgrey;
+  height: 100%;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.top-bar {
+  background: black;
+  height: 1em;
+  width: 100%;
+}
+
+header {
+  background: url('images/badge.jpg') center/cover;
   text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: 400;
+  margin: 0;
+  padding: .25em 0;
+}
+
+h2 {
+  font-size: 1em;
+  font-weight: 250;
+  margin: 0;
+  padding-bottom: 1em;
+}
+
+.strong-break {
+  background: #5a5a5a;
+  height: .35em;
   width: 100%;
 }
 
-nav {
-  background: #ebf5ee;
+.pairs {
+  background: transparent;
+  border-bottom: 1px solid grey;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  box-sizing: border-box;
+  color: white;
+  font-family: inherit;
+  font-size: 1.25em;
+  height: 2.25em;
+  outline: none;
+  overflow: hidden;
+  padding: 0 0 0 5%;
+  width: 100%;
 }
 
-a {
-  background: #8b786d;
-  color: #ebf5ee;
-  display: block;
+.begin {
+  background: transparent;
+  border: none;
+  border-right: 1px solid grey;
+  color: white;
+  cursor: pointer;
   float: left;
-  padding: 10px 35px;
+  font-family: inherit;
+  font-size: 1.25em;
+  font-weight: 200;
+  outline: none;
+  padding: .1em 0;
+  width: 50%;
 }
 
-a:hover {
-  background: #283044;
+h3 {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.25em;
+  font-weight: 200;
+  margin: 0;
+  padding: .1em 0;
+  width: 50%;
 }
 
-.clearfix:after {
-  clear: both;
-  content: ' ';
-  display: block;
-  font-size: 0;
-  height: 0;
-  visibility: hidden;
-}
-
-footer {
-  background: #ebf5ee;
-  bottom: 0;
-  clear: both;
-  font-size: 18px;
-  height: 25px;
-  position: absolute;
+.light-break {
+  background: grey;
+  height: .2em;
   width: 100%;
+}
+
+p {
+  color: black;
+  display: none;
+  padding: 0 1em;
+}
+
+.banner {
+  background: darkgreen;
+  color: lightgreen;
+  display: none;
+  padding: .25em;
+  text-align: center;
+}
+
+.game-board {
+  width: 100%;
+}
+
+.card {
+  background: maroon;
+  border: 2px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+  float: left;
+  margin: 2% 0 0 2%;
+  overflow: hidden;
+  padding-top: 47%;
+  position: relative;
+  width: 47%;
+}
+
+.content {
+  bottom: 0;
+  color: black;
+  font-size: 1.75em;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+}
+
+.vcenter {
+  height: 47%;
+  margin-top: -23.5%;
+  padding: 0 .5em;
+  top: 50%;
 }
 
 img {
   height: 100%;
-  padding-left: 1px;
   width: 100%;
 }
 
+footer {
+  background: black;
+  bottom: 0;
+  color: grey;
+  font-size: .8em;
+  height: 1.5em;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.ga {
+  color: red;
+}
+
+.show {
+  display: block;
+}
+
 .invalid {
-  border: 1px solid red;
+  border: 2px solid red;
 }
 
 .matched {
-  border: 1px solid green;
+  border: 2px solid green;
 }
 
-#number {
-  width: 200px;
+@media (min-width: 600px) {
+  .card {
+    margin: 1.75% 0 0 1.75%;
+    padding-top: 31%;
+    width: 31%;
+  }
+
+  .vcenter {
+    height: 31%;
+    margin-top: -15.5%;
+    top: 50%;
+  }
 }
 
-#number:focus {
-  outline: none;
-}
+@media (min-width: 950px) {
+  .card {
+    margin: 2% 0 0 2%;
+    padding-top: 22.5%;
+    width: 22.5%;
+  }
 
-p {
-  display: none;
-  padding: 0 20px;
-}
+  .vcenter {
+    height: 22.5%;
+    margin-top: -11.25%;
+    top: 50%;
+  }
 
-#instButton {
-  background: #283044;
-  cursor: pointer;
-  float: left;
-  height: 30px;
-  padding-top: 10px;
-  width: 35%;
-}
-
-#inputs {
-  background: #283044;
-  height: 30px;
-  padding-top: 10px;
-}
-
-#win {
-  background: darkgreen;
-  color: lightgreen;
-  font-size: 20px;
-  margin: 0;
-}
-.show {
-  display: block;
+  .wrapper,
+  footer {
+    width: 950px;
+  }
 }

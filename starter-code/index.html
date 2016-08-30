@@ -1,37 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Memory Game</title>
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MEMORY | GAME</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 </head>
 
 <body>
-
-  <nav class="clearfix">
-    <a href="#instructions">Instructions</a>
-    <a href="#game-board">Game</a>
-    <h1>Memory Game</h1>
-  </nav>
-
-  <div id="instButton">
-    <h2 id="instructions">Instructions</h2>
-    <h2 id="arrow">˅</h2>
+  <div class="wrapper">
+    <div class="top-bar"></div>
+    <header>
+      <h1>MEMORY | GAME</h1>
+      <h2>- VINTAGE PORSCHE EDITION -</h2>
+      <div class="strong-break"></div>
+      <input class="pairs" type="number" min="1" placeholder="Enter number of pairs">
+      <input class="begin" type="button" value="BEGIN" onclick="checkInput();">
+      <h3>ABOUT ↓</h3>
+      <div class="light-break"></div>
+    </header>
+    <p>Created for General Assembly's WDI Fundamentals class. To play: Enter the number of pairs to play with in the box above then press 'Begin'. Click a card to reveal an image or description. Match all images to their descriptions to win!</p>
+    <div id="win" class="banner">You Win!</div>
+    <div class="game-board"></div>
+    <footer>Created with ❤ by <span class="ga">GA</span></footer>
   </div>
-  <div id="inputs">
-    <input id="number" type="text" placeholder="Number of cards">
-    <input id="start" type="button" value="Start Game" onclick="checkInput();">
-  </div>
-  <p id="text">To begin, enter the number of cards you wish to play with in the box above and click 'Start Game'. Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.</p>
-  <p id="win">You Win!</p>
-  <div class="board" id="game-board"></div>
-
-  <footer>Created with ♥ by <span class="name">GA</span></footer>
-
   <script src="main.js"></script>
-
 </body>
 
 </html>
