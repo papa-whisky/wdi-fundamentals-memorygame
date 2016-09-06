@@ -57,7 +57,7 @@ var checkInput = function () {
 //Generate deck, shuffle, create game board.
 var createBoard = function (x) {
   clearBoard();
-  //Create deck randomly but in pairs (half of cards with image type, half with text).
+  //Create first half of deck randomly and assign 'img' type.
   for (var i = 0; i < x; i++) {
     var card1 = document.createElement('div');
     var card2 = document.createElement('div');
@@ -72,14 +72,19 @@ var createBoard = function (x) {
     card1.addEventListener('click', clickCard);
     card1.appendChild(card1Content);
     card1Content.className = ('content');
-    card2.className = ('card');
-    card2.setAttribute('data-value', rand);
-    card2.setAttribute('data-type', 'text');
-    card2.setAttribute('data-matched', "N");
-    deck.push(card2);
-    card2.addEventListener('click', clickCard);
-    card2.appendChild(card2Content);
-    card2Content.className = ('content vcenter');
+  };
+  //Duplicate to create second half of deck and assign 'text' type.
+  for (var i = 0; i < x; i++) {
+    var card = document.createElement('div');
+    var cardContent = document.createElement('div');
+    card.className = 'card';
+    card.setAttribute('data-value', deck[i].getAttribute('data-value'));
+    card.setAttribute('data-type', 'text');
+    card.setAttribute('data-matched', "N");
+    deck.push(card);
+    card.addEventListener('click', clickCard);
+    card.appendChild(cardContent);
+    cardContent.className = ('content vcenter');
   };
   //Shuffle deck.
   shuffleArray(deck);
@@ -120,7 +125,8 @@ function clickCard() {
       this.firstChild.innerHTML = '<img src="images/' + this.getAttribute('data-value') + '.jpg" alt="' + this.getAttribute('data-value') + '">';
     } else {
       this.firstChild.innerHTML = this.getAttribute('data-value');
-    }
+    };
+    this.firstChild.classList.add('slide');
     //Once two cards have been clicked, call function to compare. Delay to allow image time to load. (**Why does function need to be in quotes?**)
     if (cardsInPlay.length === 2) {
       setTimeout('isMatch(cardsInPlay)', 100);
@@ -165,6 +171,7 @@ var clearCards = function () {
   for (var i = 0; i < cards.length; i++) {
     if (cards[i].getAttribute('data-matched') === "N") {
       cards[i].firstChild.innerHTML = "";
+      cards[i].firstChild.classList.remove('slide');
       cards[i].className = ('card');
     };
   };

@@ -130,6 +130,7 @@ p {
 .content {
   bottom: 0;
   color: black;
+  display: none;
   font-size: 1.75em;
   left: 0;
   position: absolute;
@@ -166,7 +167,17 @@ footer {
 }
 
 .show {
+  animation: slideDown 2s ease;
   display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide {
+  animation: slideIn 1s ease;
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .invalid {
@@ -175,6 +186,38 @@ footer {
 
 .matched {
   border: 2px solid green;
+}
+
+@keyframes slideDown {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @media (min-width: 600px) {
