@@ -27,7 +27,7 @@ aboutButton[0].addEventListener("click", function () {
     aboutText[0].className = 'show';
     aboutButton[0].innerHTML = 'ABOUT ↑';
   } else {
-    aboutText[0].className = ('');
+    aboutText[0].className = ('about');
     aboutButton[0].innerHTML = 'ABOUT ↓';
   };
 });
@@ -59,19 +59,17 @@ var createBoard = function (x) {
   clearBoard();
   //Create first half of deck randomly and assign 'img' type.
   for (var i = 0; i < x; i++) {
-    var card1 = document.createElement('div');
-    var card2 = document.createElement('div');
-    var card1Content = document.createElement('div');
-    var card2Content = document.createElement('div');
+    var card = document.createElement('div');
+    var cardContent = document.createElement('div');
     var rand = cardValues[Math.floor(Math.random() * cardValues.length)];
-    card1.className = ('card');
-    card1.setAttribute('data-value', rand);
-    card1.setAttribute('data-type', 'img');
-    card1.setAttribute('data-matched', "N");
-    deck.push(card1);
-    card1.addEventListener('click', clickCard);
-    card1.appendChild(card1Content);
-    card1Content.className = ('content');
+    card.className = ('card');
+    card.setAttribute('data-value', rand);
+    card.setAttribute('data-type', 'img');
+    card.setAttribute('data-matched', "N");
+    deck.push(card);
+    card.addEventListener('click', clickCard);
+    card.appendChild(cardContent);
+    cardContent.className = ('content');
   };
   //Duplicate to create second half of deck and assign 'text' type.
   for (var i = 0; i < x; i++) {
@@ -91,6 +89,7 @@ var createBoard = function (x) {
   //Create game board.
   for (var i = 0; i < x * 2; i++) {
     gameBoard[0].appendChild(deck[i]);
+    deck[i].className += " deal"
   };
 };
 
@@ -124,12 +123,12 @@ function clickCard() {
     if (this.getAttribute('data-type') === "img") {
       this.firstChild.innerHTML = '<img src="images/' + this.getAttribute('data-value') + '.jpg" alt="' + this.getAttribute('data-value') + '">';
     } else {
-      this.firstChild.innerHTML = this.getAttribute('data-value');
+      this.firstChild.innerHTML = "<p>" + this.getAttribute('data-value');
     };
     this.firstChild.classList.add('slide');
-    //Once two cards have been clicked, call function to compare. Delay to allow image time to load. (**Why does function need to be in quotes?**)
+    //Once two cards have been clicked, call function to compare.
     if (cardsInPlay.length === 2) {
-      setTimeout('isMatch(cardsInPlay)', 100);
+      isMatch(cardsInPlay);
     };
   };
 };
