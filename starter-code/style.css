@@ -67,10 +67,10 @@ h2 {
 }
 
 /*Remove spinner buttons*/
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .begin {
@@ -161,9 +161,9 @@ footer {
   color: grey;
   font-size: .8em;
   height: 1.5em;
+  margin: 0 auto;
   text-align: center;
   width: 100%;
-  margin: 0 auto;
 }
 
 .ga {
@@ -183,9 +183,9 @@ footer {
 }
 
 .slide {
+  align-items: center;
   animation: slideIn 1s ease;
   display: flex;
-  align-items: center;
   opacity: 1;
   transform: translateX(0);
 }
@@ -215,8 +215,12 @@ footer {
 }
 
 @keyframes deal {
-  from {transform: scale(0);}
-  to {transform: scale(1);}
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 @keyframes slideIn {

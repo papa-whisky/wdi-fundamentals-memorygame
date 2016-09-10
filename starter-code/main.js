@@ -86,7 +86,7 @@ var createBoard = function (x) {
   shuffleArray(deck);
   //Create game board.
   for (var i = 0; i < x * 2; i++) {
-    setTimeout(function(i) {
+    setTimeout(function (i) {
       gameBoard[0].appendChild(deck[i]);
       deck[i].className += " deal";
     }, i * 150, i);
