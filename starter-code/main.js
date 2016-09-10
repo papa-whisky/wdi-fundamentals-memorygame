@@ -65,7 +65,6 @@ var createBoard = function (x) {
     card.className = ('card');
     card.setAttribute('data-value', rand);
     card.setAttribute('data-type', 'img');
-    card.setAttribute('data-matched', "N");
     deck.push(card);
     card.addEventListener('click', clickCard);
     card.appendChild(cardContent);
@@ -78,7 +77,6 @@ var createBoard = function (x) {
     card.className = 'card';
     card.setAttribute('data-value', deck[i].getAttribute('data-value'));
     card.setAttribute('data-type', 'text');
-    card.setAttribute('data-matched', "N");
     deck.push(card);
     card.addEventListener('click', clickCard);
     card.appendChild(cardContent);
@@ -88,8 +86,10 @@ var createBoard = function (x) {
   shuffleArray(deck);
   //Create game board.
   for (var i = 0; i < x * 2; i++) {
-    gameBoard[0].appendChild(deck[i]);
-    deck[i].className += " deal"
+    setTimeout(function(i) {
+      gameBoard[0].appendChild(deck[i]);
+      deck[i].className += " deal";
+    }, i * 150, i);
   };
 };
 
@@ -138,7 +138,6 @@ var isMatch = function (x) {
   if ((x[0].getAttribute('data-value') === x[1].getAttribute('data-value')) && (x[0].getAttribute('data-type') !== x[1].getAttribute('data-type'))) {
     //Mark cards as matched.
     for (var i = 0; i < 2; i++) {
-      x[i].setAttribute('data-matched', "Y");
       x[i].className += (' matched');
     };
     cardsInPlay = [];
@@ -158,7 +157,7 @@ var isMatch = function (x) {
 //Check whether all cards have been turned over (i.e. game is complete).
 var isComplete = function () {
   for (var i = 0; i < cards.length; i++) {
-    if (cards[i].getAttribute('data-matched') === "N") {
+    if (cards[i].classList.contains('matched') === false) {
       return false;
     };
   };
@@ -168,7 +167,7 @@ var isComplete = function () {
 //Clear images from unmatched cards.
 var clearCards = function () {
   for (var i = 0; i < cards.length; i++) {
-    if (cards[i].getAttribute('data-matched') === "N") {
+    if (cards[i].classList.contains('matched') === false) {
       cards[i].firstChild.innerHTML = "";
       cards[i].firstChild.classList.remove('slide');
       cards[i].className = ('card');
